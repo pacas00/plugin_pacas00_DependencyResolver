@@ -1,0 +1,12 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="DependencyResolver_basic.cs">
+    <Files>
+      <File FileName="DependencyResolver_basic.cs" Line="10" Column="39" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+</Properties>
