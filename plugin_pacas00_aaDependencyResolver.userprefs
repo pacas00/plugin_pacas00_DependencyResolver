@@ -4,9 +4,10 @@
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="DependencyResolver_basic.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Plugins\NugetPackageHandler.cs">
     <Files>
-      <File FileName="DependencyResolver_basic.cs" Line="10" Column="39" />
+      <File FileName="DependencyResolver.cs" Line="181" Column="98" />
+      <File FileName="Plugins\NugetPackageHandler.cs" Line="18" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
 </Properties>
