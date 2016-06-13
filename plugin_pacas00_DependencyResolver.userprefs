@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="plugin_pacas00_DependencyResolver.cs">
+    <Files>
+      <File FileName="plugin_pacas00_DependencyResolver.cs" Line="27" Column="40" />
+      <File FileName="Plugins\NUPKGPackageHandler.cs" Line="184" Column="88" />
+      <File FileName="DependencyResolver.cs" Line="86" Column="31" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

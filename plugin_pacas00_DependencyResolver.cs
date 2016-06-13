@@ -24,11 +24,12 @@ namespace net.PeterCashel.DependencyResolver
 
         public void Start()
         {
+            DependencyResolver.LogEvent += logHandler;
+
             const string modName = "Pacas00's Dependency Resolver";
-            const string modId = "pacas00.aaDependencyResolver";
+            const string modId = "pacas00.DependencyResolver";
             var workingDir = "";
 
-            DependencyResolver.LogEvent += logHandler;
             StartupEvent += DependencyResolver.StartupEvent;
             StartupEvent += NUPKGPackageHandler.StartupEvent;
 

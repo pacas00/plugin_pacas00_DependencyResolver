@@ -83,7 +83,8 @@ namespace net.PeterCashel.DependencyResolver
             DoInit();
         }
 
-        private static void WriteLine(string v)
+        //Used across plugins.
+        internal static void WriteLine(string v)
         {
 #if DEBUG
             if (LogEvent != null && LogEvent.GetInvocationList().Length == 0) Debug.Log(v);

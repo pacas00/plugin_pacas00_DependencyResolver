@@ -71,9 +71,9 @@ namespace net.PeterCashel.DependencyResolver.Plugins
 
             if (!searchForDll)
             {
-                if (Directory.Exists(libFolder + Path.DirectorySeparatorChar + internalPath))
+                if (Directory.Exists(libFolder + Path.DirectorySeparatorChar + internalPath + Path.DirectorySeparatorChar))
                 {
-                    string[] files = Directory.GetFiles(libFolder + Path.DirectorySeparatorChar + internalPath, "*.dll");
+                    string[] files = Directory.GetFiles(libFolder + Path.DirectorySeparatorChar + internalPath + Path.DirectorySeparatorChar, "*.dll");
 
                     foreach (var filepath in files)
                     {
@@ -82,13 +82,13 @@ namespace net.PeterCashel.DependencyResolver.Plugins
                             Assembly assembly = Assembly.LoadFile(filepath);
                             DependencyResolver.AddAssemblyFromFile(assembly.FullName, filepath);
 
-                            //WriteLine("Adding locally cached DLL " + file.Name);
+                            WriteLine("Adding locally cached DLL " + filepath);
 
                         }
                         catch (BadImageFormatException bifEx)
                         {
                             //get rid of damaged DLL
-                            //WriteLine("Deleting Damaged DLL " + file.Name);
+                            WriteLine("Deleting Damaged DLL " + filepath);
                             File.Delete(filepath);
                         }
                     }
@@ -110,13 +110,13 @@ namespace net.PeterCashel.DependencyResolver.Plugins
                                 Assembly assembly = Assembly.LoadFile(filepath);
                                 DependencyResolver.AddAssemblyFromFile(assembly.FullName, filepath);
 
-                                //WriteLine("Adding locally cached DLL " + file.Name);
+                                WriteLine("Adding locally cached DLL " + filepath);
 
                             }
                             catch (BadImageFormatException bifEx)
                             {
                                 //get rid of damaged DLL
-                                //WriteLine("Deleting Damaged DLL " + file.Name);
+                                WriteLine("Deleting Damaged DLL " + filepath);
                                 File.Delete(filepath);
                             }
                         }
@@ -125,9 +125,9 @@ namespace net.PeterCashel.DependencyResolver.Plugins
             }
         }
 
-        public static void AddNuPkgFromUrl(string url)
+        public static void AddNuPkgFromUrl(string name, string url)
         {
-            AddNuPkgFromUrl(url, (string)null);
+            AddNuPkgFromUrl(name, url, (string)null);
         }
 
 
@@ -138,10 +138,10 @@ namespace net.PeterCashel.DependencyResolver.Plugins
         /// </summary>
         /// <param name="url">URL to download the package from</param>
         /// <param name="internalPath">the internal path in the nupkg to the dll libraries for .net 3.5</param>
-        public static void AddNuPkgFromUrl(string url, string[] internalPath)
+        public static void AddNuPkgFromUrl(string name, string url, string[] internalPath)
         {
             string path = String.Join(Path.DirectorySeparatorChar.ToString(), internalPath);
-            AddNuPkgFromUrl(url, path);
+            AddNuPkgFromUrl(name, url, path);
         }
 
         /// <summary>
@@ -149,10 +149,13 @@ namespace net.PeterCashel.DependencyResolver.Plugins
         /// </summary>
         /// <param name="url">URL to download the package from</param>
         /// <param name="internalPath">the internal path in the nupkg to the dll libraries for .net 3.5</param>
-        public static void AddNuPkgFromUrl(string url, string internalPath)
+        public static void AddNuPkgFromUrl(string name, string url, string internalPath)
         {
             string[] parts = url.Split('/');
-            string filename = parts[parts.Length - 1];
+            string filename = name;
+            WriteLine(name);
+            WriteLine(url);
+            WriteLine(internalPath);
 
             if (!File.Exists(_packageDir + Path.DirectorySeparatorChar + filename))
             {
@@ -166,7 +169,7 @@ namespace net.PeterCashel.DependencyResolver.Plugins
 
                 if (www != null && www.error != null && www.error.Length > 2)
                 {
-                    throw new Exception(www.error);
+                    WriteLine(www.error);
                 }
 
                 bytes = new byte[www.bytes.Length];
@@ -175,12 +178,18 @@ namespace net.PeterCashel.DependencyResolver.Plugins
 
                 if (bytes == null || bytes.Length == 1)
                 {
-                    throw new Exception("NULL OR 1 BYTE ARRAY");
+                    WriteLine("NULL OR 1 BYTE ARRAY");
                 }
 
                 File.WriteAllBytes(_packageDir + Path.DirectorySeparatorChar + filename, bytes);
             }
             AddNuPkg(_packageDir + Path.DirectorySeparatorChar + filename, internalPath);
+        }
+
+
+        public static void WriteLine(string s)
+        {
+            DependencyResolver.WriteLine(s);
         }
     }
 }
