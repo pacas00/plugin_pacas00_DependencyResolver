@@ -1,18 +1,18 @@
 ﻿using System;
-namespace net.PeterCashel.DependencyResolver
+namespace net.PeterCashel.DependencyResolver.Event
 {
-	public class DependencyLogEventArgs: EventArgs
-	{
-		public string LogMessage
-		{
-			private set; get;
-		}
+    public class DependencyLogEventArgs : EventArgs
+    {
+        public string LogMessage
+        {
+            private set; get;
+        }
 
-		public DependencyLogEventArgs(string Text)
-		{
-			LogMessage = Text;
-		}
+        public DependencyLogEventArgs(string text)
+        {
+            LogMessage = text;
+        }
 
-	}
+    }
 }
 

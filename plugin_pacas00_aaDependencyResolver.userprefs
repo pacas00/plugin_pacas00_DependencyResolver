@@ -1,13 +1,12 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="Plugins\NugetPackageHandler.cs">
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="DependencyResolver.cs" Line="181" Column="98" />
-      <File FileName="Plugins\NugetPackageHandler.cs" Line="18" Column="28" />
+      <File FileName="DependencyResolver.cs" Line="181" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
 </Properties>

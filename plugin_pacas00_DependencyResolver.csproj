@@ -8,10 +8,11 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>net.PeterCashel.DependencyResolver</RootNamespace>
-    <AssemblyName>plugin_pacas00_aaDependencyResolver</AssemblyName>
+    <AssemblyName>plugin_pacas00_DependencyResolver</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,14 +24,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType></DebugType>
+    <DebugType>
+    </DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CustomCommands>
+      <CustomCommands>
+        <Command type="AfterBuild" command="xcopy /Y &quot;${TargetDir}\plugin_pacas00_DependencyResolver.dll&quot; &quot;${ProjectDir}\modFolder\pacas00.DependencyResolver\1\&quot;" workingdir="" />
+        <Command type="AfterBuild" command="xcopy /Y &quot;${TargetDir}\plugin_pacas00_DependencyResolver.dll&quot; &quot;C:\Users\Peter\AppData\Local\ProjectorGames\FortressCraft\Mods\pacas00.DependencyResolver\1\&quot;" />
+        <Command type="AfterBuild" command="7za a pacas00.DependencyResolver.zip pacas00.DependencyResolver" workingdir="${ProjectDir}\modFolder\" />
+      </CustomCommands>
+    </CustomCommands>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ionic.Zip, Version=1.9.1.9000, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Steam\SteamLibrary\steamapps\common\FortressCraft\64\FC_64_Data\Managed\Ionic.Zip.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\..\..\Steam\SteamLibrary\steamapps\common\FortressCraft\64\FC_64_Data\Managed\UnityEngine.dll</HintPath>
@@ -44,16 +57,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DependencyResolver.cs" />
+    <Compile Include="Event\ModStartupEventArgs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="plugin_pacas00_DependencyResolver.cs" />
     <Compile Include="Event\DependencyLogEventArgs.cs" />
-    <Compile Include="Plugins\NugetPackageHandler.cs" />
+    <Compile Include="Plugins\NUPKGPackageHandler.cs" />
+    <Compile Include="Utilities.cs" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Folder Include="Event\" />
-    <Folder Include="Plugins\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
