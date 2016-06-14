@@ -89,14 +89,12 @@ namespace net.PeterCashel.DependencyResolver
 #if DEBUG
             if (LogEvent != null && LogEvent.GetInvocationList().Length == 0) Debug.Log(v);
 #endif
-
             LogEvent?.Invoke(null, new DependencyLogEventArgs(v));
         }
 
         private static void ResolveLocalLibs()
         {
             DirectoryInfo dInfo = new DirectoryInfo(_cacheDir);
-
             foreach (FileInfo file in dInfo.GetFiles())
             {
                 try
@@ -138,12 +136,10 @@ namespace net.PeterCashel.DependencyResolver
         public static System.Reflection.Assembly CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
         {
             #region File DLL
-
             if (_knownAssemblies.ContainsKey(args.Name))
             {
                 string assemblyPath = _knownAssemblies[args.Name];
                 WriteLine("Resolving File Dependency " + args.Name);
-
                 try
                 {
                     Assembly loaded = Assembly.LoadFile(assemblyPath);
@@ -167,19 +163,15 @@ namespace net.PeterCashel.DependencyResolver
             if (_webAssemblies.ContainsKey(args.Name) && !_failedAssemblies.Contains(args.Name))
             {
                 string assemblyUrl = _webAssemblies[args.Name];
-
                 WriteLine("Resolving Web Dependency " + args.Name);
                 {
                     string[] parts = assemblyUrl.Split('/');
-
                     string filename = parts[parts.Length - 1];
 
                     WriteLine("URL " + assemblyUrl);
                     WriteLine("Filename " + filename);
 
                     byte[] bytes = new byte[1]; //1b, trying to stop any nulls
-
-
                     WWW www = new WWW(assemblyUrl);
 
                     float timeOut = Time.time + 10f; //I believe this is 10 seconds
@@ -216,7 +208,6 @@ namespace net.PeterCashel.DependencyResolver
 
                     bytes = new byte[www.bytes.Length];
                     www.bytes.CopyTo(bytes, 0);
-
                     www.Dispose();
 
 
@@ -228,7 +219,6 @@ namespace net.PeterCashel.DependencyResolver
                     }
 
                     File.WriteAllBytes(_cacheDir + Path.DirectorySeparatorChar + filename, bytes);
-
                     try
                     {
                         Assembly loaded = Assembly.Load(bytes);

@@ -57,7 +57,6 @@ namespace net.PeterCashel.DependencyResolver.Plugins
         private static void ProcessNuPkg(string filePathToNupkg, string internalPath)
         {
             bool searchForDll = internalPath == null;
-
             string[] parts = filePathToNupkg.Split('\\');
             string filename = parts[parts.Length - 1];
             string libFolder = _packageDir + Path.DirectorySeparatorChar + filename.Substring(0, filename.LastIndexOf('.'));
@@ -74,7 +73,6 @@ namespace net.PeterCashel.DependencyResolver.Plugins
                 if (Directory.Exists(libFolder + Path.DirectorySeparatorChar + internalPath + Path.DirectorySeparatorChar))
                 {
                     string[] files = Directory.GetFiles(libFolder + Path.DirectorySeparatorChar + internalPath + Path.DirectorySeparatorChar, "*.dll");
-
                     foreach (var filepath in files)
                     {
                         try
@@ -102,7 +100,6 @@ namespace net.PeterCashel.DependencyResolver.Plugins
                     if (Directory.Exists(libFolder + Path.DirectorySeparatorChar + dirPath))
                     {
                         string[] files = Directory.GetFiles(libFolder + Path.DirectorySeparatorChar + dirPath, "*.dll");
-
                         foreach (var filepath in files)
                         {
                             try
